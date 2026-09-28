@@ -265,6 +265,16 @@ type Holiday struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
+// TeamsEvent is one raw MQTT message from Teams for Linux (teams/#), or a logger
+// marker (_logger/*). Stored raw; all analytics are computed at report time.
+type TeamsEvent struct {
+	ID       uint      `gorm:"primaryKey" json:"id"`
+	TS       time.Time `gorm:"index" json:"ts"` // receive time, UTC
+	Topic    string    `gorm:"not null;index" json:"topic"`
+	Payload  string    `gorm:"type:text" json:"payload"`
+	Retained bool      `json:"retained"` // delivered as a retained replay
+}
+
 // TableName overrides the table name for DailySummary
 func (DailySummary) TableName() string {
 	return "daily_summaries"

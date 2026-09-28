@@ -60,9 +60,9 @@ func AutoMigrate() error {
 	var migrationErr error
 
 	// Migrate new/simple tables first
-	migrationErr = DB.AutoMigrate(&Library{}, &Settings{}, &DailySummary{}, &Holiday{})
+	migrationErr = DB.AutoMigrate(&Library{}, &Settings{}, &DailySummary{}, &Holiday{}, &TeamsEvent{})
 	if migrationErr != nil {
-		return fmt.Errorf("auto-migration failed for library/settings/daily_summaries/holidays: %w", migrationErr)
+		return fmt.Errorf("auto-migration failed for library/settings/daily_summaries/holidays/teams_events: %w", migrationErr)
 	}
 
 	// For projects, components, deployments - use safe migration
