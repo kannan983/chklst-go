@@ -13,6 +13,8 @@ services:
       - .env
     environment:
       PORT: "8000"
+      # Teams for Linux MQTT broker (Mosquitto on 127.0.0.1) — feeds the My Teams tab.
+      MQTT_URL: "tcp://localhost:1883"
     volumes:
       # Persist the SQLite database and backups across container rebuilds.
       - chklst-data:/app/data

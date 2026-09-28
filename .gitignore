@@ -7,7 +7,7 @@ subfinder.txt
 !.env.example
 
 # Binaries
-chklst
+/chklst
 chklst-dev
 chklst.exe
 chklst-mac
